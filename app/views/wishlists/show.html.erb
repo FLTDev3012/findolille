@@ -1,0 +1,123 @@
+ <!-- app/views/offers/show.html.erb -->
+<% content_for :meta_title, "#{@wishlist.name} is on #{DEFAULT_META["Findo"]}" %>
+
+ <div class="home-body">
+
+
+ <!--------------------------NAVBAR---------------------------------->
+
+
+ <%= render "shared/navbargreen" %>
+
+ <!--------------------------END NAVBAR---------------------------------->
+
+
+
+
+ <!--------------------------TOP---------------------------------->
+
+<!---Title & tag wishlist---->
+
+  <div class="wishlist-name-description" data-controller="wishlist-subscription"
+  data-wishlist-subscription-wishlist-id-value="<%= @wishlist.id %>">
+
+    <div class="Text-wishlist-name">
+      <h1 class="titre">
+          <%= @wishlist.name %>
+      </h1>
+
+
+      <p class="text">
+          Vote pour le cadeau qui correspond le mieux à la personne !
+      </p>
+      <div data-controller="share" data-share-url-value="<%=wishlist_url(@wishlist)%>">
+        <button class="btn-share" data-action="click->share#share"> Partager</button>
+      </div>
+    </div>
+  </div>
+
+
+    <div class="card pillule">
+      <% @wishlist.wishlists_tags.each do |tag| %>
+        <% if !tag.tag.image_path.nil? %>
+          <p class="card-tag-9"><%= image_tag tag.tag.image_path, class: "new--icones"%><%= tag.tag.name %></p>
+        <% else %>
+          <p class="card-tag-9"><%= tag.tag.name %></p>
+        <% end %>
+      <% end %>
+    </div>
+
+
+
+
+
+ <!---END Title @ tag wishlist---->
+
+
+ <!--------------------------BOTTOM---------------------------------->
+
+
+<div class="avatar-cards">
+
+
+ <!--- Avatard gauche ---->
+  <div class="avatar-section">
+    <div class="vote-avatar">
+
+    <% User.joins(votes: { wishlists_gift: :wishlist }).where(wishlists: { id: @wishlist.id }).distinct.each do |user| %>
+      <% if user.votes.exists?(wishlists_gift_id: @wishlist.wishlists_gifts.pluck(:id)) %>
+        <%= render "shared/avatar", user: user, wishlist: @wishlist %>
+
+      <% end %>
+    <% end %>
+    </div>
+ </div>
+
+
+
+
+
+
+
+ <!--- END Avatard gauche ---->
+
+
+
+ <!--- Cards droite---->
+    <div class="cards" data-controller="upvote">
+        <% @gifts.each do |wishlists_gift| %>
+          <div class="animated-card">
+            <div class="front-card d-flex justify-content-end" style="background-image: url(<%= wishlists_gift.gift.photo %>)">
+              <div class="p-2">
+                <p id="vote-<%=wishlists_gift.id%>", class="rank"><%= wishlists_gift.vote%></p>
+              </div>
+              <%#= cl_image_tag wishlists_gift.gift.photo, height: 150, width: 200 , crop: :fill,class:"" %>
+            </div>
+
+            <div class="back-card">
+              <div class="back-card-info">
+                <%= image_tag "icones/oeil.png", class:"oeil" %>
+                <%# <h2>mettre l'oeil</h2> %>
+                <div class="data">
+                  <h3><%= wishlists_gift.gift.name %></h3>
+                  <h3><%= wishlists_gift.gift.price %>€</h3>
+                </div>
+                <div class="terminus">
+                   <%= link_to "Détails" , wishlists_gift_path(wishlists_gift), class: "button-home variant1" %>
+      <%#Dans le model Vote, on va checker s'il y a un wishlists_gift_id et un user_id. S'il y en a, tu prends le wishlists_gift_id donc l'id de ta wishlist et l'id du current user, puis tu regardes si son vote est inférieur à 1. Si oui tu lui laisse le btn pour voter. Sinon le btn est supprimé %>
+                   <% if Vote.where('wishlists_gift_id=? and user_id=?', wishlists_gift.id, current_user.id).size < 1  %>
+                    <p class= "button-home variant2" data-action="click->upvote#addvote" data-wishlistgift=<%= wishlists_gift.id%>>Voter</p>
+                   <% end %>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        <% end %>
+    </div>
+</div>
+
+<!--- END Cards droite---->
+
+
+</div>

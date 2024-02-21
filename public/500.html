@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>We're sorry, but something went wrong (500)</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <style>
+  .rails-error {
+  min-height: 100vh;
+  background:linear-gradient(45deg, #fbda61,#ff5acd);
+
+  }
+  .container{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 7em;
+
+  }
+
+.dialog{
+  display: block;
+  font-size: xx-large;
+  margin-top: 4em;
+  font-family: 'Mukta Malar', sans-serif;
+  text-align: center;
+}
+.num-error > h1{
+text-align: center;
+color: white;
+}
+.message{
+  color:white;
+}
+  </style>
+</head>
+
+<body class="rails-error">
+  <!-- This file lives in public/500.html -->
+  <div class="container">
+    <div class="robot-image">
+      <img src="/images/robot.png" alt="robot500">
+    </div>
+    <div class="dialog">
+      <div class="num-error">
+        <h1>500</h1>
+      </div>
+      <p class="message">Oups, ça n'a pas marché ^^</p>
+      <p class="message">C-3PO va s'en charger !</p>
+    </div>
+  </div>
+</body>
+</html>

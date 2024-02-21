@@ -1,0 +1,82 @@
+*,
+*::before,
+*::after {
+  box-sizing: content-box;
+}
+
+.wishlist-name-description {
+  margin-top: 316px;
+}
+
+.Text-wishlist-name {
+  text-align: center;
+  margin-bottom: 30px;
+  line-height: 65px;
+}
+
+.card.pillule {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  width: 85%;
+  gap: 1em;
+  margin-top: 130px;
+  margin-bottom: 74px;
+  margin-left: 11%;
+}
+
+.pillule-category-show {
+  border: 1px solid black;
+  border-radius: 15px;
+  background: $terra;
+  color: white;
+  width: fit-content;
+  padding: 5px 10px;
+  margin-right: 45px;
+}
+
+.avatar-cards {
+  display: grid;
+  grid-template-columns: minmax(150px, 15%) 85%;
+}
+
+.avatar-section {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+}
+
+.avatar-rond {
+  border-radius: 50%;
+  width: 65px;
+  margin-bottom: 10px;
+  // margin-right: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.show-votes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.vote-avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.cards {
+  place-items: center;
+  place-content: flex-start;
+  margin-right: 40px;
+  grid-template-rows: 320px repeat(auto-fill, 320px);
+  grid-auto-rows: minmax(320px, 344px);
+}

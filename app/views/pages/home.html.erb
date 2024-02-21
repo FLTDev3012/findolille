@@ -1,0 +1,89 @@
+
+ <div class="home-body">
+
+ <!--------------------------NAVBAR---------------------------------->
+
+ <%= render "shared/navbargreen" %>
+
+
+ <!--------------------------END NAVBAR---------------------------------->
+
+
+
+ <!--------------------------TOP---------------------------------->
+
+<div class="container">
+
+<!---Title Hero banner à gauche---->
+
+  <section class="hero-banner-top">
+
+    <div class="Text-hero-banner">
+      <h1 class="titre home">
+          Trouve LE cadeau rapidement et facilement !
+      </h1>
+      <p class="text-home">
+          Choisis tes critères, rassemble tes amis et vote pour le meilleur cadeau de la liste.
+          C'est simple, rapide et ludique.
+      </p>
+        <%= link_to "Découvrir", new_wishlist_path, class:"button-home" %>
+    </div>
+
+ <!---END Title Hero banner à gauche---->
+
+
+ <!---IMG Hero banner à droite---->
+
+      <div class="image-hero-banner">
+        <%=image_tag "cadeau-img-banner.jpg"%>
+      </div>
+
+  </section>
+
+ <!---END IMG Hero banner à droite---->
+
+
+ <!--------------------------BOTTOM---------------------------------->
+
+  <section class="hero-banner-bottom">
+
+ <!--- Fleche et numéro à gauche bottom ---->
+
+        <%=image_tag "fleche et images", class:"fleche-numero"%>
+
+
+ <!--- END Fleche et numéro à gauche bottom ---->
+
+
+ <!--- Paragraphe droite bottom ---->
+
+
+    <div class="Paragraphes">
+      <p class="titre-para"><strong>Un cadeau...</strong></p>
+      <p class="text-para">
+        Lorsqu'il s'agit de choisir un cadeau ou une activité à offrir à quelqu'un, il est important de se poser trois questions essentielles : <strong>"Pour quelle occasion ?", "Pour qui ?" et "Quels sont ses centres d'intérêts ?".</strong> En répondant à ces questions, vous pourrez trouver le cadeau ou l'activité idéale pour la personne en question.
+      </p>
+      <p class="titre-para"><strong>...pour offrir...</strong></p>
+      <p class="text-para">
+        <strong>"Quel est le budget ?" et "Qui participe ?"</strong> sont aussi des questions importantes afin de ne pas dépasser vos moyens financiers. En connaissant le budget, vous pourrez alors choisir une option qui convient le mieux à tous !
+      </p>
+      <p class="titre-para"><strong>...ensemble !</strong></p>
+      <p class="text-para">
+        Votez pour le cadeau qui vous semble parfait et offrez un présent inoubliable. <strong>Vous allez faire des heureux !</strong>
+        Vous pouvez dès à présent créer votre première wishlist et inviter vos amis :
+      </p>
+    </div>
+
+  </section>
+
+
+    <div class="btn-bottom">
+      <%= link_to "Découvrir", new_wishlist_path, class:"button-home" %>
+    </div>
+    <%= image_tag "image-bottom-vert", id:"home-bottom-image"%>
+ <!--- END Paragraphe droite bottom ---->
+
+</div>
+
+
+</div>
